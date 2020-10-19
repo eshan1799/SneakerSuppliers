@@ -43,7 +43,6 @@ def register():
     if (len(response) == 1):
         return jsonify("Username Taken"),401
     
-
     # resultproxy = db.session.execute('SELECT * FROM users WHERE email = :1', {'1': details['email']})
     # response = format_resp(resultproxy)
     # if (len(response) == 1):
