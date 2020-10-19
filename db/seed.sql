@@ -46,8 +46,7 @@ VALUES
 (1, 'Nike', 'Air Force 1', 'White', 'Nike', 'https://www.nike.com/gb/t/air-max-1-g-golf-shoe-HfXLmR/CI7576-002', 119.99, 35, 'https://stockx.imgix.net/Nike-Air-Max-1-London.png?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1583909335', 'Brilliant deal this is!', 6),
 (2, 'Air Jordan', '11', 'Space Jam', 'Foot Patrol', 'https://www.nike.com/gb/t/air-max-1-g-golf-shoe-HfXLmR/CI7576-002', 99.99, 45, 'https://stockx.imgix.net/Nike-Air-Max-1-London.png?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1583909335', 'Best DEAL ever', 9),
 (3, 'Nike', 'Air Max 97', 'Green', 'Size?', 'https://www.nike.com/gb/t/air-max-1-g-golf-shoe-HfXLmR/CI7576-002', 119.99, 75, 'https://stockx.imgix.net/Nike-Air-Max-1-London.png?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1583909335', 'Brilliant deal this is!', 8),
-(3, 'Adidas', 'NMD R1', 'Japan White', 'Adidas', 'https://www.nike.com/gb/t/air-max-1-g-golf-shoe-HfXLmR/CI7576-002', 99.99, 45, 'https://stockx.imgix.net/Nike-Air-Max-1-London.png?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1583909335', 'Best DEAL ever', 2)
-;
+(3, 'Adidas', 'NMD R1', 'Japan White', 'Adidas', 'https://www.nike.com/gb/t/air-max-1-g-golf-shoe-HfXLmR/CI7576-002', 99.99, 45, 'https://stockx.imgix.net/Nike-Air-Max-1-London.png?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1583909335', 'Best DEAL ever', 2);
 
 INSERT INTO comments (user_id, post_id, comment, likes)
 VALUES
