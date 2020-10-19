@@ -53,5 +53,4 @@ INSERT INTO comments (user_id, post_id, comment, likes)
 VALUES
 (1, 1, 'Great deal!', 4),
 (1, 2, 'Wonderful, thanks!', 12),
-(2, 1, 'Grate', 9)
-;
+(2, 1, 'Grate', 9);
