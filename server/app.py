@@ -17,13 +17,14 @@ app = Flask(__name__)
 CORS(app)
 
 app.config["SECRET_KEY"] = os.getenv("SECRET")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URI")
 jwt = JWTManager(app)
 Session(app)
 
-ENV = 'prod'
+# ENV = 'prod'
 
 # if ENV == 'dev':
-#     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URI")
+    # app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URI")
 # else:
 #     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://fljqfwclscahjt:410eeae48d75a9a7520d58c53a8ecb7590b92c46e37974c6e7b33f1e786d6033@ec2-34-197-212-240.compute-1.amazonaws.com:5432/ddq3o01kksfm47'
 
