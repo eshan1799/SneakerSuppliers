@@ -124,6 +124,7 @@ def posts():
         db.session.commit()
         return jsonify('Post added')
 
+
 # @app.route('/check', methods=['GET'])
 # def check():
 #     resultproxy = db.session.execute('SELECT * FROM users WHERE username = :1', {'1': 'user1'})
