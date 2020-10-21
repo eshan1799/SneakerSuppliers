@@ -9,7 +9,6 @@ ReactDOM.render (
   <Provider store={store}>
     <BrowserRouter>
       <App />
-      <LoadingIndicator />
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")
