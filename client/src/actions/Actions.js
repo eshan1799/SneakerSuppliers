@@ -1,3 +1,10 @@
+const url = "http://localhost:5000";
+
+const addPosts = (posts) => ({
+  type: "ADD_POSTS",
+  payload: posts,
+});
+
 // const addPortfolio = (portfolio) => ({
 //   type: "ADD_PORTFOLIO",
 //   payload: portfolio,
@@ -49,6 +56,7 @@ export const registerUser = (details) => {
             .then((data) => {
             if (data.status == 200) {
                 alert(`Welcome ${data.username}, please log in`);
+                window.location = `/login`;
             } else {
                 alert(data);
             }
@@ -67,21 +75,37 @@ export const login = (details) => {
         method: "POST",
         body: JSON.stringify(details),
       };
-      trackPromise(
         fetch(`${url}/login`, options)
           .then((r) => r.json())
           .then((data) => {
             if (data.token) {
+              console.log('dododo')
               console.log(data.token);
               localStorage.setItem("user", data.token);
               window.location = `/`;
-              dispatch(getPortfolio());
+              dispatch(getPosts());
             } else {
               console.log(data);
               alert(data);
             }
-          })
-      );
+          });
+    } catch (err) {
+      console.warn(err.message);
+    }
+  };
+};
+
+export const getPosts = () => {
+  return async (dispatch) => {
+    try {
+      const options = {
+        method: "GET",
+        headers: { Authorization: `Bearer ${localStorage.getItem("user")}` },
+      };
+      const response = await fetch(`${url}/posts`, options);
+      const posts = await response.json();
+      console.log(posts)
+      dispatch(addPosts(posts));
     } catch (err) {
       console.warn(err.message);
     }
