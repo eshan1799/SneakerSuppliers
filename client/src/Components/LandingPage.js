@@ -4,7 +4,7 @@ import { Button, Dialog, DialogActions, DialogContent, TextField } from '@materi
 class LandingPage extends React.Component {
     render() {
         return (
-            <section class='fullvh'>
+            <section className='fullvh'>
                 <h1 id='homepageLogo'>Sneaker Suppliers</h1>
                 <div>
                     <Button variant="contained" size="large" href='/login'>
