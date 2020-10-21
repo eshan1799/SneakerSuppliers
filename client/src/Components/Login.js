@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card, CardContent, TextField, CardActions, Typography, Link } from '@material-ui/core';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { login } from '../actions/Actions';
 
 class Login extends React.Component {
 
@@ -12,7 +13,6 @@ class Login extends React.Component {
     handleSubmit = e => {
         e.preventDefault()
         this.props.logOn(this.state.details)
-        this.setState({ loggedIn: true })
     }
 
     handleInput = e => {
@@ -23,7 +23,7 @@ class Login extends React.Component {
 
     render() {
         if (localStorage.getItem("user")) {
-            <Redirect to='/dashboard' />
+            <Redirect to='/posts' />
         }
         return (
             <>
@@ -32,7 +32,7 @@ class Login extends React.Component {
                         <CardContent>
                             <section className="alignCentre">
                                 <h1>Login</h1>
-                                <form>
+                                <form onSubmit={ this.handleSubmit }>
                                     <TextField
                                         required
                                         autoFocus
