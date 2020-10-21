@@ -1,7 +1,30 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { registerUser } from '../actions/Actions';
 import { Button, Card, CardContent, TextField, CardActions, Typography, Link } from '@material-ui/core';
 
 class Register extends React.Component {
+
+    state = {
+        details: {}
+    }
+
+    handleSubmit = e => {
+        e.preventDefault()
+        if (this.state.details.password === this.state.details.confirm) {
+            this.props.signUp(this.state.details)
+        } else {
+            alert('Passwords don\'t match!')
+            e.target.reset()
+        }
+    }
+    
+    handleInput = (e) => {
+    let details = this.state.details;
+    details[e.target.name] = e.target.value
+    this.setState({ details })
+    }
+
     render() {
         return (
             <>
@@ -11,7 +34,7 @@ class Register extends React.Component {
                         <section className="alignCentre">
                             <h1>Register</h1>
                         </section>
-                            <form>
+                            <form onSubmit={ this.handleSubmit }>
                                 <TextField
                                     required
                                     autoFocus
@@ -21,7 +44,7 @@ class Register extends React.Component {
                                     name="username"
                                     type="text"
                                     fullWidth
-                                    onChange={ this.handleChange }
+                                    onChange={ this.handleInput }
                                 />
                                 <TextField
                                     required
@@ -31,21 +54,22 @@ class Register extends React.Component {
                                     name="password"
                                     type="password"
                                     fullWidth
-                                    onChange={ this.handleChange }
+                                    onChange={ this.handleInput }
                                 />
                                 <TextField
                                     required
                                     margin="dense"
                                     id="re-enter password"
                                     label="Re-enter Password"
-                                    name="re-enter password"
+                                    name="confirm"
                                     type="password"
                                     fullWidth
+                                    onChange={ this.handleInput }
                                 />
                                 <div className="alignCentre">
                                     <CardActions>
                                         <Button variant="contained" size="large" type="submit">
-                                            Login
+                                            Register
                                         </Button>
                                     </CardActions>
                                     <Typography>
@@ -63,4 +87,8 @@ class Register extends React.Component {
     }
 }
 
-export default Register;
+const mDTP = dispatch => ({
+    signUp: (details) => dispatch(registerUser(details))
+})
+
+export default connect(null, mDTP)(Register)
