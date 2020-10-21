@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, CardContent, TextField, CardActions } from '@material-ui/core';
+import { Button, Card, CardContent, TextField, CardActions, Typography, Link } from '@material-ui/core';
 
 class Register extends React.Component {
     render() {
@@ -48,6 +48,11 @@ class Register extends React.Component {
                                             Login
                                         </Button>
                                     </CardActions>
+                                    <Typography>
+                                        <Link href="/login">
+                                            Already a user?
+                                        </Link>
+                                    </Typography>
                                 </div>
                             </form>
                         </CardContent>
