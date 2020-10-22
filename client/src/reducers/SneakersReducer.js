@@ -1,5 +1,4 @@
 const initState = {
-    username: '',
     myPosts: [],
     allPosts: []
 }
@@ -7,7 +6,7 @@ const initState = {
 const SneakersReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_POSTS':
-            return { ...state, allPosts: action.payload, username: action.payload.username }
+            return { ...state, allPosts: action.payload.posts }
         // case 'ADD_HISTORY':
         //     return { ...state, history: action.payload }
         // case 'ADD_SEARCH':
