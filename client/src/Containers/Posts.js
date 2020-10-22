@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { getPosts } from "../actions/Actions";
 import { Post } from "../Components/index/index";
+import { Button, Card, CardContent } from '@material-ui/core';
 
 class Posts extends React.Component {
 
@@ -22,11 +23,22 @@ class Posts extends React.Component {
         // this.props.getPosts();
 
         return (
-            <>
+            <section>
             <h1>Sneaker Suppliers</h1>
             <h2>Posts</h2>
-            { this.props.allPosts  ? this.renderPosts(this.props.allPosts) : 'There are no posts' }
-            </>
+            <section className="alignCentre">
+                <Card>
+                    <CardContent>
+                        { this.props.allPosts  ? this.renderPosts(this.props.allPosts) : 'There are no posts' }
+                    </CardContent>
+                </Card>
+            </section>
+            <footer>
+            <p>
+                Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+            </p>
+            </footer>
+            </section>
         )
     }
 }
