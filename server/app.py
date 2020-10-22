@@ -107,11 +107,13 @@ def dashboard():
         dashboard = { 'username':username_val, 'posts':posts_val }
         return jsonify(dashboard),200
 
-@app.route('/posts', methods=['GET', 'POST'])
+@app.route('/posts/<int:post_id>', methods=['GET', 'POST'])
 @jwt_required
-def posts():
+def posts(post_id):
     if request.method == 'GET':
         posts = db.session.execute('SELECT * FROM posts ORDER BY datetime')
+        # SELECT users.username FROM users, posts INNER JOIN posts ON users.id = posts.user_id
+        # SELECT posts.user_id FROM posts INNER JOIN users ON users.id = posts.user_id
         posts_val = format_resp(posts)
         if len(posts_val) == 0:
             posts_val = ['No posts']
