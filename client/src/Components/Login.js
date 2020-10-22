@@ -25,6 +25,7 @@ class Login extends React.Component {
         if (localStorage.getItem("user")) {
             <Redirect to='/posts' />
         }
+        
         return (
             <>
                 <section className='fullvh'>
