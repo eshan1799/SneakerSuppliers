@@ -27,3 +27,20 @@
 #homepageLogo:hover {
   cursor: default;
 }
+
+.cardContent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.postImage {
+  width: 10%;
+}
+
+.lineThrough { text-decoration: line-through; }
+
+.icon {
+  width: 3.5%;
+  height: 3.5%;
+}
