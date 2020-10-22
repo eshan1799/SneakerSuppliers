@@ -75,15 +75,14 @@ export const login = (details) => {
         method: "POST",
         body: JSON.stringify(details),
       };
-        fetch(`${url}/login`, options)
+        fetch(`${ url }/login`, options)
           .then((r) => r.json())
           .then((data) => {
             if (data.token) {
-              console.log('dododo')
               console.log(data.token);
               localStorage.setItem("user", data.token);
-              window.location = `/`;
-              dispatch(getPosts());
+              window.location='/';
+              // dispatch(getPosts());
             } else {
               console.log(data);
               alert(data);
@@ -100,9 +99,9 @@ export const getPosts = () => {
     try {
       const options = {
         method: "GET",
-        headers: { Authorization: `Bearer ${localStorage.getItem("user")}` },
+        headers: { Authorization: `Bearer ${ localStorage.getItem("user") }` },
       };
-      const response = await fetch(`${url}/posts`, options);
+      const response = await fetch(`${ url }/posts`, options);
       const posts = await response.json();
       console.log(posts)
       dispatch(addPosts(posts));
