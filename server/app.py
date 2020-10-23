@@ -44,22 +44,13 @@ def register():
     response = format_resp(resultproxy)
     if (len(response) == 1):
         return jsonify("Username Taken"),401
-    
-    # resultproxy = db.session.execute('SELECT * FROM users WHERE email = :1', {'1': details['email']})
-    # response = format_resp(resultproxy)
-    # if (len(response) == 1):
-    #     return jsonify("Email Already Registered to Account"),401
-
     hash_pw = pw.hash(details['password'])
-    # resultproxy = db.session.execute('INSERT INTO users (username,hash,email) VALUES (:1, :2, :3) RETURNING username, id', {'1': details['username'], '2':hash_pw, '3':details['email']})
     resultproxy = db.session.execute('INSERT INTO users (username,hash) VALUES (:1, :2) RETURNING username, id', { '1': details['username'], '2':hash_pw })
     response = format_resp(resultproxy)
-    # db.session.execute('INSERT INTO balance (user_id,balance) VALUES (:1, 10000)',{'1':response[0]['id']})
     db.session.commit()
     resp = {'username': response[0]['username'], 'status': 200}
     
     return jsonify(resp)
-
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -72,23 +63,6 @@ def login():
     else:
         if (pw.verify(details['password'], response[0]['hash'])):
             token = create_access_token(identity=response[0]["id"], expires_delta=False)
-            
-            # check_ticker={}
-            # result_proxy = db.session.execute('SELECT id, ticker FROM portfolio WHERE user_id= :1',{'1':response[0]["id"]})
-            # stocks = format_resp(result_proxy)
-            # req_token = os.getenv("TOKEN")
-            # for stock in stocks:
-            #     if (stock['ticker'] in check_ticker):
-            #         db.session.execute('UPDATE portfolio SET price = :1 WHERE id = :2', {'1': check_ticker[stock['ticker']] + 1, '2': stock['id']})
-            #         db.session.commit()
-            #     else:
-            #         response = requests.get(f"https://cloud.iexapis.com/stable/stock/{stock['ticker']}/quote?token={req_token}")
-            #         response_dict = response.json()
-            #         new_price = response_dict['latestPrice']
-            #         db.session.execute('UPDATE portfolio SET price = :1 WHERE id = :2', {'1': new_price, '2': stock['id']})
-            #         db.session.commit()
-            #         check_ticker[stock['ticker']]=new_price
- 
             return jsonify(token = token),200
         else:
             return jsonify("Password Incorrect"), 401
@@ -107,9 +81,9 @@ def dashboard():
         dashboard = { 'username':username_val, 'posts':posts_val }
         return jsonify(dashboard),200
 
-@app.route('/posts/<int:post_id>', methods=['GET', 'POST'])
-@jwt_required
-def posts(post_id):
+@app.route('/posts/', methods=['GET', 'POST'])
+# @jwt_required
+def posts():
     if request.method == 'GET':
         posts = db.session.execute('SELECT * FROM posts ORDER BY datetime')
         # SELECT users.username FROM users, posts INNER JOIN posts ON users.id = posts.user_id
@@ -122,9 +96,9 @@ def posts(post_id):
     if request.method == 'POST':
         user_id = get_jwt_identity()
         add_post = request.get_json()
-        db.session.execute('INSERT INTO posts (user_id, brand, sneaker, colourway, store, deal_url, retail_price, discount_price, picture_url, description, likes) VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11', { '1': user_id, '2': add_post['brand'], '3': add_post['sneaker'], '4': add_post['colourway'], '5': add_post['store'], '6': add_post['deal_url'], '7': add_post['retail_price'], '8': add_post['discount_price'], '9': add_post['picture_url'], '10': add_post['description'], '11': add_post['likes'],  })
+        db.session.execute('INSERT INTO posts (user_id, brand, sneaker, colourway, store, deal_url, retail_price, discount_price, picture_url, description, likes) VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11)', { '1': user_id, '2': add_post['brand'], '3': add_post['sneaker'], '4': add_post['colourway'], '5': add_post['store'], '6': add_post['deal_url'], '7': add_post['retail_price'], '8': add_post['discount_price'], '9': add_post['picture_url'], '10': add_post['description'], '11': 0 })
         db.session.commit()
-        return jsonify('Post added')
+        return jsonify('Post added'),200
 
 # @app.route('/check', methods=['GET'])
 # def check():
