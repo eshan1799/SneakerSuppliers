@@ -58,11 +58,6 @@ class Posts extends React.Component {
     }
 
     render() {
-        // this.props.getPosts();
-        // if (this.state.refresh) {
-        //     this.setState({ refresh: false })
-        //     return <Redirect to="/posts" />
-        // }
         return (
             <section id="postsSection">
             <h1>Sneaker Suppliers</h1>
