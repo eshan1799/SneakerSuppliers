@@ -52,6 +52,11 @@ class Posts extends React.Component {
         }
     }
 
+    logOut = () => {
+        localStorage.clear();
+        window.location = '/';
+    }
+
     render() {
         // this.props.getPosts();
         // if (this.state.refresh) {
@@ -59,11 +64,14 @@ class Posts extends React.Component {
         //     return <Redirect to="/posts" />
         // }
         return (
-            <section>
+            <section id="postsSection">
             <h1>Sneaker Suppliers</h1>
             <h2>Posts</h2>
-            <Button onClick= { this.handleOpen }>
+            <Button variant="outlined" onClick= { this.handleOpen }>
                 +
+            </Button>
+            <Button variant="outlined" onClick={ this.logOut }>
+                Logout
             </Button>
             <Dialog open={ this.state.isModalOpen }>
                 <DialogContent>
@@ -176,7 +184,7 @@ class Posts extends React.Component {
                             </form>
                 </DialogContent>
             </Dialog>
-            <section className="alignCentre">
+            <section className="posts">
                 <Card>
                     <CardContent>
                         { this.props.allPosts  ? this.renderPosts(this.props.allPosts) : 'No posts' }
