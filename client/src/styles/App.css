@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Staatliches&display=swap');
+
 * {
   margin: 0px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .fullvh {
@@ -20,10 +23,61 @@
 }
 
 #homepageLogo {
-  font-family: sans-serif;
+  font-family: 'Staatliches', cursive;
   font-size: 750%;
+}
+
+h1 { 
+  font-family: 'Staatliches', cursive;
+  font-size: 200%;
 }
 
 #homepageLogo:hover {
   cursor: default;
+}
+
+.cardContent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.posts {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.postImage {
+  width: 19%;
+}
+
+.lineThrough { text-decoration: line-through; }
+
+.icon {
+  width: 3.5%;
+  height: 3.5%;
+}
+
+.post {
+  max-width: 70%;
+}
+
+.posts { margin-bottom: 5%; }
+
+.leftAlignFlex {
+  padding: 0 2%;
+}
+
+.rightAlignFlexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: right;
+}
+
+#postsSection {
+  margin-left: 2%;
 }

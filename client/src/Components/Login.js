@@ -33,7 +33,7 @@ class Login extends React.Component {
                         <CardContent>
                             <section className="alignCentre">
                                 <h1>Login</h1>
-                                <form onSubmit={ this.handleSubmit }>
+                                <form onSubmit={ this.handleSubmit } autoComplete="off">
                                     <TextField
                                         required
                                         autoFocus

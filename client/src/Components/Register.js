@@ -34,7 +34,7 @@ class Register extends React.Component {
                         <section className="alignCentre">
                             <h1>Register</h1>
                         </section>
-                            <form onSubmit={ this.handleSubmit }>
+                            <form onSubmit={ this.handleSubmit } autoComplete="off">
                                 <TextField
                                     required
                                     autoFocus
