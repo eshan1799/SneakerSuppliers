@@ -4,7 +4,7 @@
 A community driven outlet for sneakerheads to find the latest and most popular deals and restocks.
 
 ## Instructions
-- ## Local Version
+#### Local Version
     - ### First Time Setup Instructions
         - #### Prerequisites
             - [Node.js](https://nodejs.org/en/)
