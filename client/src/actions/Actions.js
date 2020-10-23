@@ -39,9 +39,9 @@ const addPosts = (posts) => ({
 //   type: "CLEAR_SEARCH",
 // });
 
-// export const signOut = () => ({
-//   type: "LOG_OUT",
-// });
+export const signOut = () => ({
+  type: "LOG_OUT",
+});
 
 export const registerUser = (details) => {
   return (async) => {
@@ -101,10 +101,34 @@ export const getPosts = () => {
         method: "GET",
         headers: { Authorization: `Bearer ${ localStorage.getItem("user") }` },
       };
-      const response = await fetch(`${ url }/posts`, options);
+      const response = await fetch(`${ url }/posts/`, options);
       const posts = await response.json();
       console.log(posts)
       dispatch(addPosts(posts));
+    } catch (err) {
+      console.warn(err.message);
+    }
+  };
+};
+
+export const submitNewPost = (postInfo) => {
+  return (async) => {
+    try {
+      const options = {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify(postInfo),
+      };
+        fetch(`${url}/posts/`, options)
+          .then((r) => r.json())
+          .then((data) => {
+            if (data.status == 200) {
+              alert(`Post Submitted`);
+              // window.location = `/login`;
+            } else {
+              alert(data);
+            }
+          })
     } catch (err) {
       console.warn(err.message);
     }
