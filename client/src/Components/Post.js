@@ -17,7 +17,7 @@ class Post extends React.Component {
                                     </Link>
                                 </Typography>
                                 <p>
-                                    £{ this.props.post.discount_price }
+                                    £{ `${ this.props.post.discount_price } `}
                                     <span className='lineThrough'>
                                         £{ this.props.post.retail_price }
                                     </span>
