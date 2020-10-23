@@ -4,7 +4,7 @@ import { Button, Card, CardMedia, CardContent, TextField, CardActions, Typograph
 class Post extends React.Component {
     render() {
         return(
-            <section className='post'>
+            <section className='alignCentre'>
                 <Card variant="outlined">
                     <CardContent>
                         <section className="cardContent">
@@ -24,8 +24,9 @@ class Post extends React.Component {
                                 </p>
                             </div>
                             <div className="rightAlignFlexColumn">
-                                <div className='rightAlignFlexRow'>
-                                    <img className="icon" src="./img/fire.png" /><p>{ this.props.post.likes }</p>
+                                <div className="rightAlignFlexRow">
+                                    <img className="icon" src="./img/fire.png" />
+                                    <p>{ this.props.post.likes }</p>
                                 </div>
                                 <p>{ this.props.post.username }</p>
                             </div>
