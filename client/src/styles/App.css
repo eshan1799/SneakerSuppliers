@@ -27,6 +27,11 @@
   font-size: 750%;
 }
 
+h1 { 
+  font-family: 'Staatliches', cursive;
+  font-size: 200%;
+}
+
 #homepageLogo:hover {
   cursor: default;
 }
@@ -37,8 +42,16 @@
   flex-direction: row;
 }
 
+.posts {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .postImage {
-  width: 10%;
+  width: 19%;
 }
 
 .lineThrough { text-decoration: line-through; }
@@ -46,4 +59,25 @@
 .icon {
   width: 3.5%;
   height: 3.5%;
+}
+
+.post {
+  max-width: 70%;
+}
+
+.posts { margin-bottom: 5%; }
+
+.leftAlignFlex {
+  padding: 0 2%;
+}
+
+.rightAlignFlexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: right;
+}
+
+#postsSection {
+  margin-left: 2%;
 }
